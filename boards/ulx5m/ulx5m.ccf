@@ -1,0 +1,20 @@
+NET "refclk"        Loc="IO_SB_A8";
+
+NET "led[0]"        Loc="IO_SB_A0"; # LED0
+NET "led[1]"        Loc="IO_SB_B0"; # LED1
+NET "led[2]"        Loc="IO_SB_A1"; # LED2
+NET "led[3]"        Loc="IO_SB_B1"; # LED3
+NET "resetn"        Loc="IO_SB_B3"; # LED6
+NET "r"             Loc="IO_SB_A3"; # LED7
+
+NET "usb_ufp_dp"    Loc="IO_EA_A0" | slew=fast | pullup=true;
+NET "usb_ufp_dm"    Loc="IO_EA_B0" | slew=fast;
+#NET "usb_ufp_dp"   Loc="IO_EA_A1" | slew=fast | pullup=true;
+#NET "usb_ufp_dm"   Loc="IO_EA_B1" | slew=fast;
+
+NET "usb_ufp_pull"  Loc="IO_EA_A1";
+
+NET "flash_miso"    Loc="IO_WA_A7";
+NET "flash_mosi"    Loc="IO_WA_B7" | slew=fast; #io0
+NET "flash_csel"    Loc="IO_WA_A8" | slew=fast;
+NET "flash_sclk"    Loc="IO_WA_B8" | slew=fast;
