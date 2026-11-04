@@ -44,13 +44,13 @@ $(PROJTOP).txt: $(PROJTOP).json $(PIN_DEF)
 	nextpnr-himbaechel --device CCGM1A1 --json $< --vopt ccf=$(PIN_DEF) --vopt out=$@ --router router2
 
 %.bit: %.txt cmd.hex
-	gmpack --reconfig --bootaddr $(BOOTADDR) $< $@
+	gmpack --reconfig --reset --bootaddr $(BOOTADDR) $< $@
 	python3 mkcmd.py --check $@ cmd.hex
 
 # Regenerate the CC_CFG_CTRL command stream from a bootloader build,
 # then rebuild the bootloader so it contains the new cmd.hex.
 cmd: $(PROJTOP).txt
-	gmpack --reconfig --bootaddr $(BOOTADDR) $< cmd_tmp.bit
+	gmpack --reconfig --reset --bootaddr $(BOOTADDR) $< cmd_tmp.bit
 	python3 mkcmd.py cmd_tmp.bit cmd.hex
 	rm -f cmd_tmp.bit
 
